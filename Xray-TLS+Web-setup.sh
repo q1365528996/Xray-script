@@ -140,12 +140,12 @@ version_ge()
 #检查脚本更新
 check_script_update()
 {
-    [ "$(md5sum "${BASH_SOURCE[0]}" | awk '{print $1}')" == "$(md5sum <(wget -O - "https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh") | awk '{print $1}')" ] && return 1 || return 0
+    [ "$(md5sum "${BASH_SOURCE[0]}" | awk '{print $1}')" == "$(md5sum <(wget -O - "https://ghproxy.com/https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh") | awk '{print $1}')" ] && return 1 || return 0
 }
 #更新脚本
 update_script()
 {
-    if wget -O "${BASH_SOURCE[0]}" "https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh" || wget -O "${BASH_SOURCE[0]}" "https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh"; then
+    if wget -O "${BASH_SOURCE[0]}" "https://ghproxy.com/https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh" || wget -O "${BASH_SOURCE[0]}" "https://ghproxy.com/https://github.com/kirin10000/Xray-script/raw/main/Xray-TLS+Web-setup.sh"; then
         green "脚本更新完成，请重新运行脚本！"
         exit 0
     else
@@ -240,7 +240,7 @@ test_important_dependence_installed()
                 temp_exit_code=0
             else
                 red "安装依赖 \"$1\" 出错！"
-                green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+                green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
                 yellow "按回车键继续或者Ctrl+c退出"
                 read -s
             fi
@@ -290,7 +290,7 @@ install_dependence()
             $apt_no_install_recommends -y -f install
             if ! $apt_no_install_recommends -y install "$@"; then
                 yellow "依赖安装失败！！"
-                green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+                green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
                 yellow "按回车键继续或者Ctrl+c退出"
                 read -s
             fi
@@ -298,7 +298,7 @@ install_dependence()
     else
         if ! redhat_install "$@"; then
             yellow "依赖安装失败！！"
-            green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+            green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
             yellow "按回车键继续或者Ctrl+c退出"
             read -s
         fi
@@ -412,7 +412,7 @@ install_epel()
             yellow "epel源安装失败！！"
         fi
         echo
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "按回车键继续或者Ctrl+c退出"
         read -s
     fi
@@ -424,7 +424,7 @@ fedora_install_remi()
     fi
     if ! redhat_install "https://rpms.remirepo.net/fedora/remi-release-$systemVersion.rpm"; then
         yellow "remi源安装失败！！"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "按回车键继续或者Ctrl+c退出"
         read -s
     fi
@@ -490,7 +490,7 @@ swap_on()
 {
     if [ $using_swap_now -ne 0 ]; then
         red    "开启swap错误发生"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "按回车键继续或者Ctrl+c退出"
         read -s
     fi
@@ -503,7 +503,7 @@ swap_on()
             rm -rf ${temp_dir}/swap
             red    "开启swap失败！"
             yellow "可能是机器内存和硬盘空间都不足"
-            green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+            green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
             yellow "按回车键继续或者Ctrl+c退出"
             read -s
         fi
@@ -517,7 +517,7 @@ swap_off()
             using_swap_now=0
         else
             red    "关闭swap失败！"
-            green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的
+            green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的
 支持"
             yellow "按回车键继续或者Ctrl+c退出"
             read -s
@@ -572,7 +572,7 @@ ask_if()
 #卸载函数
 remove_xray()
 {
-    if ! bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove --purge; then
+    if ! bash -c "$(curl -L https://ghproxy.com/https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove --purge; then
         systemctl stop xray
         systemctl disable xray
         rm -rf /usr/local/bin/xray
@@ -838,7 +838,7 @@ fi
 if ! check_sudo; then
     yellow "检测到正在使用sudo！"
     yellow "acme.sh不支持sudo，请使用root用户运行此脚本"
-    tyblue "详情请见：https://github.com/acmesh-official/acme.sh/wiki/sudo"
+    tyblue "详情请见：https://ghproxy.com/https://github.com/acmesh-official/acme.sh/wiki/sudo"
     exit 1
 fi
 [ -e $nginx_config ] && nginx_is_installed=1 || nginx_is_installed=0
@@ -872,7 +872,7 @@ get_system_info()
     timezone="$(ls -l /etc/localtime | awk -F zoneinfo/ '{print $NF}')"
     if [[ ! -L /etc/localtime ]] || [ "$timezone" == "" ]; then
         yellow "获取时区失败！"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "按回车键继续或者Ctrl+c退出"
         read -s
     fi
@@ -900,7 +900,7 @@ get_system_info()
     systemVersion="$(bash -c "echo $(grep '^[ '$'\t]*VERSION_ID[ '$'\t]*=' /etc/os-release | cut -d = -f 2-)")"
     if [ "$(bash -c "echo $(grep '^[ '$'\t]*ID[ '$'\t]*=' /etc/os-release | cut -d = -f 2-)")" == "" ] || [ "$systemVersion" == "" ]; then
         yellow "获取系统信息失败！"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "按回车键继续或者Ctrl+c退出"
         read -s
     fi
@@ -947,7 +947,7 @@ check_nginx_installed_system()
     fi
     red "卸载失败！"
     yellow "请尝试更换系统，建议使用Ubuntu最新版系统"
-    green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+    green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
     exit 1
 }
 
@@ -1545,7 +1545,7 @@ install_bbr()
                         if ! version_ge "$(dpkg --list | grep '^[ '$'\t]*ii[ '$'\t][ '$'\t]*linux-base[ '$'\t]' | awk '{print $3}')" "4.5ubuntu1~16.04.1"; then
                             if ! $apt update; then
                                 red "$apt update出错"
-                                green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+                                green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
                                 yellow "按回车键继续或者Ctrl+c退出"
                                 read -s
                             fi
@@ -1581,11 +1581,11 @@ install_bbr()
                     fi
                     local temp_kernel_sh_url
                     if [ $choice -eq 1 ]; then
-                        temp_kernel_sh_url="https://github.com/kirin10000/update-kernel/raw/master/update-kernel-stable.sh"
+                        temp_kernel_sh_url="https://ghproxy.com/https://github.com/kirin10000/update-kernel/raw/master/update-kernel-stable.sh"
                     elif [ $choice -eq 4 ]; then
-                        temp_kernel_sh_url="https://github.com/kirin10000/update-kernel/raw/master/update-kernel.sh"
+                        temp_kernel_sh_url="https://ghproxy.com/https://github.com/kirin10000/update-kernel/raw/master/update-kernel.sh"
                     else
-                        temp_kernel_sh_url="https://github.com/kirin10000/xanmod-install/raw/main/xanmod-install.sh"
+                        temp_kernel_sh_url="https://ghproxy.com/https://github.com/kirin10000/xanmod-install/raw/main/xanmod-install.sh"
                     fi
                     if ! wget -O kernel.sh "$temp_kernel_sh_url"; then
                         red    "获取内核安装脚本失败"
@@ -1626,7 +1626,7 @@ install_bbr()
                         yellow "按回车键以继续。。。"
                         read -s
                     fi
-                    if ! wget -O bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh; then
+                    if ! wget -O bbr.sh https://ghproxy.com/https://github.com/teddysun/across/raw/master/bbr.sh; then
                         red    "获取bbr脚本失败"
                         yellow "按回车键继续或者按Ctrl+c终止"
                         read -s
@@ -1703,7 +1703,7 @@ readProtocolConfig()
     echo
     blue   " 注："
     blue   "   1. 不知道什么是CDN或不使用CDN，请选择TCP"
-    blue   "   2. gRPC和WebSocket支持通过CDN，关于两者的区别，详见：https://github.com/kirin10000/Xray-script#关于grpc与websocket"
+    blue   "   2. gRPC和WebSocket支持通过CDN，关于两者的区别，详见：https://ghproxy.com/https://github.com/kirin10000/Xray-script#关于grpc与websocket"
     blue   "   3. 只有TCP能使用XTLS，且XTLS完全兼容TLS"
     blue   "   4. 能使用TCP传输的只有VLESS"
     echo
@@ -1778,7 +1778,7 @@ readPretend()
         green  " 128MB<=内存<1G 建议选择 Cloudreve"
         green  " 内存>=1G 建议选择 Nextcloud 或 Cloudreve"
         echo
-        yellow " 关于选择伪装网站的详细说明见：https://github.com/kirin10000/Xray-script#伪装网站说明"
+        yellow " 关于选择伪装网站的详细说明见：https://ghproxy.com/https://github.com/kirin10000/Xray-script#伪装网站说明"
         echo
         pretend=""
         while [[ "$pretend" != "1" && "$pretend" != "2" && "$pretend" != "3" && "$pretend" != "4" && "$pretend" != "5" ]]
@@ -1910,7 +1910,6 @@ readDomain()
     domain_config_list+=("$domain_config")
     pretend_list+=("$pretend")
 }
-
 install_nginx_compile_toolchains()
 {
     green "正在安装Nginx编译工具链。。。"
@@ -1953,7 +1952,7 @@ install_php_dependence()
             $apt_no_install_recommends -y -f install
             if ! $apt_no_install_recommends -y install libxml2-dev libsqlite3-dev libsystemd-dev libacl1-dev libapparmor-dev libssl-dev libkrb5-dev libpcre2-dev zlib1g-dev libbz2-dev libcurl4-openssl-dev libqdbm-dev libdb-dev libtokyocabinet-dev liblmdb-dev libenchant-2-dev libffi-dev libpng-dev libgd-dev libwebp-dev libjpeg-dev libxpm-dev libfreetype6-dev libgmp-dev libc-client2007e-dev libicu-dev libldap2-dev libsasl2-dev libonig-dev unixodbc-dev freetds-dev libpq-dev libpspell-dev libedit-dev libmm-dev libsnmp-dev libsodium-dev libargon2-dev libtidy-dev libxslt1-dev libzip-dev libmagickwand-dev && ! $apt_no_install_recommends -y install libxml2-dev libsqlite3-dev libsystemd-dev libacl1-dev libapparmor-dev libssl-dev libkrb5-dev libpcre2-dev zlib1g-dev libbz2-dev libcurl4-openssl-dev libqdbm-dev libdb-dev libtokyocabinet-dev liblmdb-dev libenchant-dev libffi-dev libpng-dev libgd-dev libwebp-dev libjpeg-dev libxpm-dev libfreetype6-dev libgmp-dev libc-client2007e-dev libicu-dev libldap2-dev libsasl2-dev libonig-dev unixodbc-dev freetds-dev libpq-dev libpspell-dev libedit-dev libmm-dev libsnmp-dev libsodium-dev libargon2-dev libtidy-dev libxslt1-dev libzip-dev libmagickwand-dev; then
                 yellow "依赖安装失败！！"
-                green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+                green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
                 yellow "按回车键继续或者Ctrl+c退出"
                 read -s
             fi
@@ -1995,7 +1994,6 @@ install_web_dependence()
         fi
     fi
 }
-
 #编译&&安装php
 compile_php()
 {
@@ -2024,7 +2022,7 @@ compile_php()
     if ! make -j$cpu_thread_num; then
         swap_off
         red    "php编译失败！"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "在Bug修复前，建议使用Ubuntu最新版系统"
         exit 1
     fi
@@ -2035,7 +2033,7 @@ instal_php_imagick()
 {
     local cflags
     gen_cflags
-    if ! git clone https://github.com/Imagick/imagick; then
+    if ! git clone https://ghproxy.com/https://github.com/Imagick/imagick; then
         yellow "获取php-imagick源码失败"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
@@ -2047,7 +2045,7 @@ instal_php_imagick()
     if ! make -j$cpu_thread_num; then
         swap_off
         yellow "php-imagick编译失败"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "在Bug修复前，建议使用Ubuntu最新版系统"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
@@ -2080,7 +2078,6 @@ install_php_part2()
     sed -i 's/^[ \t]*listen[ \t]*=/;&/g' ${php_prefix}/etc/php-fpm.d/www.conf
     sed -i 's/^[ \t]*env\[PATH\][ \t]*=/;&/g' ${php_prefix}/etc/php-fpm.d/www.conf
 cat >> ${php_prefix}/etc/php-fpm.d/www.conf << EOF
-
 listen = /dev/shm/php-fpm/php-fpm.sock
 pm = dynamic
 pm.max_children = $((16*cpu_thread_num))
@@ -2092,17 +2089,14 @@ EOF
     rm -rf "${php_prefix}/etc/php.ini"
     cp "${php_prefix}/php.ini-production" "${php_prefix}/etc/php.ini"
 cat >> ${php_prefix}/etc/php.ini << EOF
-
 [PHP]
 extension=imagick.so
 zend_extension=opcache.so
 opcache.enable=1
 date.timezone=$timezone
-
 ;如果使用mysql，并且使用unix domain socket方式连接，请正确设置以下内容
 ;pdo_mysql.default_socket=/var/run/mysqld/mysqld.sock
 ;mysqli.default_socket=/var/run/mysqld/mysqld.sock
-
 memory_limit=-1
 post_max_size=0
 upload_max_filesize=9223372036854775807
@@ -2114,7 +2108,6 @@ session.auto_start=0
 EOF
     install -m 644 "${php_prefix}/php-fpm.service.default" $php_service
 cat >> $php_service <<EOF
-
 [Service]
 ProtectSystem=false
 ExecStartPre=/bin/rm -rf /dev/shm/php-fpm
@@ -2139,7 +2132,7 @@ compile_nginx()
     fi
     tar -zxf ${nginx_version}.tar.gz
     rm -f "${nginx_version}.tar.gz"
-    if ! wget -O ${openssl_version}.tar.gz https://github.com/openssl/openssl/archive/${openssl_version#*-}.tar.gz; then
+    if ! wget -O ${openssl_version}.tar.gz https://ghproxy.com/https://github.com/openssl/openssl/archive/${openssl_version#*-}.tar.gz; then
         red    "获取openssl失败"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
@@ -2157,7 +2150,7 @@ compile_nginx()
     if ! make -j$cpu_thread_num; then
         swap_off
         red    "Nginx编译失败！"
-        green  "欢迎进行Bug report(https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
+        green  "欢迎进行Bug report(https://ghproxy.com/https://github.com/kirin10000/Xray-script/issues)，感谢您的支持"
         yellow "在Bug修复前，建议使用Ubuntu最新版系统"
         exit 1
     fi
@@ -2172,7 +2165,6 @@ cat > $nginx_service << EOF
 Description=The NGINX HTTP and reverse proxy server
 After=syslog.target network-online.target remote-fs.target nss-lookup.target
 Wants=network-online.target
-
 [Service]
 Type=forking
 User=root
@@ -2185,7 +2177,6 @@ ExecStart=${nginx_prefix}/sbin/nginx
 ExecStop=${nginx_prefix}/sbin/nginx -s stop
 ExecStopPost=/bin/rm -rf /dev/shm/nginx
 PrivateTmp=true
-
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -2301,7 +2292,7 @@ EOF
 install_update_xray()
 {
     green "正在安装/更新Xray。。。。"
-    if ! bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata --without-logfiles && ! bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata --without-logfiles; then
+    if ! bash -c "$(curl -L https://ghproxy.com/https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata --without-logfiles && ! bash -c "$(curl -L https://ghproxy.com/https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata --without-logfiles; then
         red    "安装/更新Xray失败"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
@@ -2309,7 +2300,6 @@ install_update_xray()
     fi
     if ! grep -q "# This file has been edited by Xray-TLS-Web setup script" /etc/systemd/system/xray.service; then
 cat >> /etc/systemd/system/xray.service <<EOF
-
 # This file has been edited by Xray-TLS-Web setup script
 [Service]
 ExecStartPre=/bin/rm -rf /dev/shm/xray
@@ -2375,69 +2365,50 @@ get_all_certs()
 config_nginx_init()
 {
 cat > ${nginx_prefix}/conf/nginx.conf <<EOF
-
 user  root root;
 worker_processes  auto;
-
 #error_log  logs/error.log;
 #error_log  logs/error.log  notice;
 #error_log  logs/error.log  info;
-
 #pid        logs/nginx.pid;
 google_perftools_profiles /dev/shm/nginx/tcmalloc/tcmalloc;
-
 events {
     worker_connections  1024;
 }
-
-
 http {
     include       mime.types;
     default_type  application/octet-stream;
-
     #log_format  main  '\$remote_addr - \$remote_user [\$time_local] "\$request" '
     #                  '\$status \$body_bytes_sent "\$http_referer" '
     #                  '"\$http_user_agent" "\$http_x_forwarded_for"';
-
     #access_log  logs/access.log  main;
-
     sendfile        on;
     #tcp_nopush     on;
-
     #keepalive_timeout  0;
     keepalive_timeout  65;
-
     #gzip  on;
-
     include       $nginx_config;
     #server {
         #listen       80;
         #server_name  localhost;
-
         #charset koi8-r;
-
         #access_log  logs/host.access.log  main;
-
         #location / {
         #    root   html;
         #    index  index.html index.htm;
         #}
-
         #error_page  404              /404.html;
-
         # redirect server error pages to the static page /50x.html
         #
         #error_page   500 502 503 504  /50x.html;
         #location = /50x.html {
         #    root   html;
         #}
-
         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #
         #location ~ \\.php\$ {
         #    proxy_pass   http://127.0.0.1;
         #}
-
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         #location ~ \\.php\$ {
@@ -2447,7 +2418,6 @@ http {
         #    fastcgi_param  SCRIPT_FILENAME  /scripts\$fastcgi_script_name;
         #    include        fastcgi_params;
         #}
-
         # deny access to .htaccess files, if Apache's document root
         # concurs with nginx's one
         #
@@ -2455,43 +2425,33 @@ http {
         #    deny  all;
         #}
     #}
-
-
     # another virtual host using mix of IP-, name-, and port-based configuration
     #
     #server {
     #    listen       8000;
     #    listen       somename:8080;
     #    server_name  somename  alias  another.alias;
-
     #    location / {
     #        root   html;
     #        index  index.html index.htm;
     #    }
     #}
-
-
     # HTTPS server
     #
     #server {
     #    listen       443 ssl;
     #    server_name  localhost;
-
     #    ssl_certificate      cert.pem;
     #    ssl_certificate_key  cert.key;
-
     #    ssl_session_cache    shared:SSL:1m;
     #    ssl_session_timeout  5m;
-
     #    ssl_ciphers  HIGH:!aNULL:!MD5;
     #    ssl_prefer_server_ciphers  on;
-
     #    location / {
     #        root   html;
     #        index  index.html index.htm;
     #    }
     #}
-
 }
 EOF
 }
@@ -2798,7 +2758,7 @@ update_cloudreve()
     local temp_cloudreve_status=0
     systemctl -q is-active cloudreve && temp_cloudreve_status=1
     systemctl stop cloudreve
-    if ! wget -O "$cloudreve_prefix/cloudreve.tar.gz" "https://github.com/cloudreve/Cloudreve/releases/download/${cloudreve_version}/cloudreve_${cloudreve_version}_linux_${machine}.tar.gz"; then
+    if ! wget -O "$cloudreve_prefix/cloudreve.tar.gz" "https://ghproxy.com/https://github.com/cloudreve/Cloudreve/releases/download/${cloudreve_version}/cloudreve_${cloudreve_version}_linux_${machine}.tar.gz"; then
         red "获取Cloudreve失败！！"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
@@ -2821,7 +2781,6 @@ Documentation=https://docs.cloudreve.org
 After=network.target
 After=mysqld.service
 Wants=network.target
-
 [Service]
 WorkingDirectory=$cloudreve_prefix
 ExecStartPre=/bin/rm -rf /dev/shm/cloudreve
@@ -2832,10 +2791,8 @@ ExecStopPost=/bin/rm -rf /dev/shm/cloudreve
 Restart=on-abnormal
 RestartSec=5s
 KillMode=mixed
-
 StandardOutput=null
 StandardError=syslog
-
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -3093,7 +3050,7 @@ print_config_info()
     echo
     ask_if "是否生成分享链接？(y/n)" && print_share_link
     echo
-    yellow " 关于fingerprint与alpn，详见：https://github.com/kirin10000/Xray-script#关于tls握手tls指纹和alpn"
+    yellow " 关于fingerprint与alpn，详见：https://ghproxy.com/https://github.com/kirin10000/Xray-script#关于tls握手tls指纹和alpn"
     echo
     blue   " 若想实现Fullcone(NAT类型开放)，需要达成以下条件："
     blue   "   1. 确保客户端核心为 Xray v1.3.0+"
@@ -3985,12 +3942,12 @@ start_menu()
     echo
     tyblue "        Cloudreve ：           ${cloudreve_status}"
     echo
-    tyblue "       官网：https://github.com/kirin10000/Xray-script"
+    tyblue "       官网：https://ghproxy.com/https://github.com/kirin10000/Xray-script"
     echo
     tyblue "----------------------------------注意事项----------------------------------"
     yellow " 1. 此脚本需要一个解析到本服务器的域名"
     tyblue " 2. 此脚本安装时间较长，建议在安装前阅读："
-    tyblue "      https://github.com/kirin10000/Xray-script#安装时长说明"
+    tyblue "      https://ghproxy.com/https://github.com/kirin10000/Xray-script#安装时长说明"
     green  " 3. 建议在纯净的系统上使用此脚本 (VPS控制台-重置系统)"
     tyblue "----------------------------------------------------------------------------"
     echo
